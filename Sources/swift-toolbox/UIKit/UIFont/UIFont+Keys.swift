@@ -1,5 +1,6 @@
 import UIKit
 
+@available(iOS 13.0, *)
 public extension UIFont {
     
     /// Returns a new font with the weight specified

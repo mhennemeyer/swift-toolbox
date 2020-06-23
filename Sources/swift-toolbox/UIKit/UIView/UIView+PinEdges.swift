@@ -1,5 +1,6 @@
 import UIKit
 
+@available(iOS 9.0, *)
 public extension UIView {
     func pinEdges(to other: UIView) {
         leadingAnchor.constraint(equalTo: other.leadingAnchor).isActive = true
@@ -8,4 +9,3 @@ public extension UIView {
         bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
     }
 }
-

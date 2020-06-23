@@ -1,5 +1,6 @@
 import UIKit
 
+@available(iOS 13.0, *)
 public extension UIViewController {
     static func fromStoryboard(bundle: Bundle? = nil, name: String? = nil) -> Self {
         let bundle = bundle ?? Bundle(for: self)

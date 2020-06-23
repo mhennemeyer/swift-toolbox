@@ -1,6 +1,6 @@
 import Foundation
 
-class TestRunner: Cancelable {
+public class TestRunner: Cancelable {
     let emitError: Bool
     
     init(emitError: Bool) {

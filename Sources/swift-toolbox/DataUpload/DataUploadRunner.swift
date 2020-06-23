@@ -4,7 +4,7 @@
 
 import Foundation
 
-class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
+public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
     let url: URL
     let data: Data
     let documentType: String
@@ -70,7 +70,7 @@ class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDelegate {
         return request
     }
     
-    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+    public func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
         let progress = UploadProgress.progress(from: Double(totalBytesSent) / Double(totalBytesExpectedToSend))
         self.uploadProgress?(progress)
     }
