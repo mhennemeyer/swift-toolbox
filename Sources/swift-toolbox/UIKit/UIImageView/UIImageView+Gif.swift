@@ -5,7 +5,7 @@ enum GifLoop {
     case infinite
 }
 
-extension UIImageView {
+public extension UIImageView {
     func setImage(gif gifName: String, loop: Int) {
         if let gif = try? UIImage(gifName: gifName) {
             setGifImage(gif, loopCount: loop)

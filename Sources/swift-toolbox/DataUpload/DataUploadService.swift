@@ -10,7 +10,7 @@ public class DataUploadService {
     let isTesting: Bool
     let documentType: String
     let url: URL
-    var emitError: Bool
+    public var emitError: Bool
     
     var task: URLSessionTask?
     var cancelable: Cancelable?

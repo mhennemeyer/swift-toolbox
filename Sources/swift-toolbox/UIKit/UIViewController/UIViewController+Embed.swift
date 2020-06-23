@@ -1,6 +1,6 @@
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     func embed(_ ctrl: UIViewController, into container: UIView, at index: Int? = nil) {
         ctrl.view.frame = container.bounds
         embed(ctrl)

@@ -4,7 +4,7 @@ public enum DataUploadServiceResponse {
     case success(statusCode: Int)
     case error
     
-    var isSuccessful: Bool {
+    public var isSuccessful: Bool {
         switch self {
         case .error:
             return false
