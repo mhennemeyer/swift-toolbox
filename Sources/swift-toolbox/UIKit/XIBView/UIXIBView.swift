@@ -3,7 +3,7 @@ import UIKit
 open class UIXIBView: UIView, XIBView {
     @IBOutlet weak public var contentView : UIView?
     
-    public @IBOutlet var controller: UIViewController!
+    @IBOutlet public var controller: UIViewController!
     // var controller: UIViewController! // external reference
     
     override init(frame: CGRect) {
