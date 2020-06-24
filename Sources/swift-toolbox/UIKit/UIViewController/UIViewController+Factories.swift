@@ -8,8 +8,8 @@ public extension UIViewController {
         return UIStoryboard(name: name, bundle: bundle).instantiateViewController(identifier: name) as! Self
     }
     
-    static func fromMainStoryboard(bundle: Bundle? = nil) -> Self {
-        fromStoryboard(bundle: bundle, name: "Main")
+    static func fromMainStoryboard() -> Self {
+        UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: Names.klazzName(self)) as! Self
     }
     
     static func fromXib(bundle: Bundle? = nil) -> Self {
