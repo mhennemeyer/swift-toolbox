@@ -6,7 +6,7 @@ open class UIXIBView: UIView, XIBView {
     @IBOutlet public var controller: UIViewController!
     // var controller: UIViewController! // external reference
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
         setup()
