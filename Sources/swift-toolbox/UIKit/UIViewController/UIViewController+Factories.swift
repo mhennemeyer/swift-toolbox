@@ -5,7 +5,7 @@ public extension UIViewController {
     static func fromStoryboard(bundle: Bundle? = nil, name: String? = nil) -> Self {
         let bundle = bundle ?? Bundle(for: self)
         let name = name ?? Names.klazzName(self)
-        return UIStoryboard(name: name, bundle: bundle).instantiateViewController(identifier: name) as! Self
+        return UIStoryboard(name: name, bundle: bundle).instantiateInitialViewController()  as! Self
     }
     
     static func fromMainStoryboard() -> Self {
