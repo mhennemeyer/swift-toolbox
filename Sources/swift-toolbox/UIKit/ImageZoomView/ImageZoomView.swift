@@ -26,7 +26,7 @@ public class ImageZoomView: UIScrollView, UIScrollViewDelegate {
         addGestureRecognizer(gestureRecognizer)
     }
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
