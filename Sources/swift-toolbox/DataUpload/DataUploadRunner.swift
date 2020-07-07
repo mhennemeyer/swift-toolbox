@@ -8,13 +8,15 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
     let url: URL
     let data: Data
     let documentType: String
+    let headers: [String: String]
     
     var uploadProgress: ((UploadProgress) -> ())?
     
-    init(url: URL, documentType: String, data: Data) {
+    init(url: URL, documentType: String, data: Data, headers: [String: String] = [String: String]()) {
         self.url = url
         self.data = data
         self.documentType = documentType
+        self.headers = headers
     }
     
     lazy var uploadQueue: OperationQueue = {
@@ -54,6 +56,9 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
     
     private func request() -> URLRequest {
         var request = URLRequest(url: url)
+        headers.forEach { key, value in
+            request.addValue(value, forHTTPHeaderField: key)
+        }
         var bodyData: Data = Data()
         let boundary = "\(UUID().uuidString)"
         bodyData.append("Content-Type: multipart/form-data; boundary=\(boundary)\r\n".data(using: .utf8)!)
