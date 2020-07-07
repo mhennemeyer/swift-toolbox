@@ -7,7 +7,7 @@ public class ImageAsset {
 
     var url: URL?
 
-    var asset:CKAsset? {
+    public var asset:CKAsset? {
         get {
             let data = self.image.pngData()
             self.url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
@@ -25,11 +25,11 @@ public class ImageAsset {
         }
     }
 
-    init(image:UIImage){
+    public init(image:UIImage){
         self.image = image
     }
 
-    func clear() {
+    public func clear() {
         print("clear image asset")
         if let url = self.url {
             do {
@@ -43,7 +43,7 @@ public class ImageAsset {
 
 }
 
-extension CKAsset {
+public extension CKAsset {
     func uiImage() -> UIImage? {
         if let data = try? Data(contentsOf: (fileURL!)), let image = UIImage(data: data) {
             return image
