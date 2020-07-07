@@ -14,12 +14,18 @@ public class DataUploadService {
     
     var task: URLSessionTask?
     var cancelable: Cancelable?
+    
+    private var headers = [String: String]()
 
     public init(_ url: URL, documentType: String, isTesting: Bool = false, emitError: Bool = false ) {
         self.isTesting = isTesting
         self.documentType = documentType
         self.url = url
         self.emitError = emitError
+    }
+    
+    public func addHeader(key: String, value: String) {
+        headers[key] = value
     }
 
     public func upload(_ uploadData: Data, progress: @escaping (UploadProgress) -> (), completion: @escaping (DataUploadServiceResponse) -> ()) {
@@ -31,7 +37,8 @@ public class DataUploadService {
             return
         }
         
-        let uploadRunner = DataUploadRunner(url: self.url, documentType: documentType, data: uploadData)
+        let uploadRunner = DataUploadRunner(url: self.url, documentType: documentType, data: uploadData, headers: headers)
+        
         if let t = uploadRunner.task(progress: progress, completion: completion) {
             self.task = t
             self.cancelable = t
