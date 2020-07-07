@@ -4,7 +4,7 @@ public class ImageZoomView: UIScrollView, UIScrollViewDelegate {
     var imageView: UIImageView!
     var gestureRecognizer: UITapGestureRecognizer!
     
-    convenience init(frame: CGRect, image: UIImage, minimumZoomScale: CGFloat = 1, maximumZoomScale: CGFloat = 2) {
+    public convenience init(frame: CGRect, image: UIImage, minimumZoomScale: CGFloat = 1, maximumZoomScale: CGFloat = 2) {
         self.init(frame: frame)
 
         imageView = UIImageView(image: image)
