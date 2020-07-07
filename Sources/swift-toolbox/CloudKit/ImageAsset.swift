@@ -1,7 +1,7 @@
 import CloudKit
 import UIKit
 
-class ImageAsset {
+public class ImageAsset {
 
     let image: UIImage
 

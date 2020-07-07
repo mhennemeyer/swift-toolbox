@@ -1,6 +1,6 @@
 import UIKit
 
-class ImageZoomView: UIScrollView, UIScrollViewDelegate {
+public class ImageZoomView: UIScrollView, UIScrollViewDelegate {
     var imageView: UIImageView!
     var gestureRecognizer: UITapGestureRecognizer!
     
