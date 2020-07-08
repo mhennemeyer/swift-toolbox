@@ -1,18 +1,22 @@
 import Foundation
 
 public extension String {
-    func matches(for regex: String) -> [String] {
-        do {
-            let regex = try NSRegularExpression(pattern: regex)
-            let results = regex.matches(in: self,
-                                        range: NSRange(self.startIndex..., in: self))
-            return results.map {
-                String(self[Range($0.range, in: self)!])
-            }
-        } catch let error {
-            print("invalid regex: \(error)")
-            return []
-        }
+    func matches(for pattern: String) -> [String] {
+        results(pattern)?.map(stringFromResult) ?? []
     }
+    
+    private func stringFromResult(result: NSTextCheckingResult) -> String {
+        String(self[Range(result.range, in: self)!])
+    }
+    
+    private func regex(_ pattern: String) -> NSRegularExpression? {
+        try? NSRegularExpression(pattern: pattern)
+    }
+    
+    private func results(_ pattern: String) -> [NSTextCheckingResult]? {
+        regex(pattern)?.matches(in: self, range: fullRange)
+    }
+    
+    private var fullRange: NSRange { NSRange(self.startIndex..., in: self) }
 }
 
