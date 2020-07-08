@@ -1,6 +1,6 @@
 import Foundation
 
-extension String {
+public extension String {
     func matches(for regex: String) -> [String] {
         do {
             let regex = try NSRegularExpression(pattern: regex)
