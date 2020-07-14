@@ -31,7 +31,7 @@ public extension Tagged {
         tags.reduce(taggedContent, removeTag)
     }
     
-    private func removeTag(from string: String?, tag: String) -> String {
+    func removeTag(from string: String?, tag: String) -> String {
         string?.replacingOccurrences(of: " @\(tag)", with: "") ?? ""
     }
 }
