@@ -10,7 +10,7 @@ public protocol Tagged {
 public extension Tagged {
     
     var tags: [String] {
-        taggedContent.matches(for: "@\\w+")
+        taggedContent.matches(for: " @\\w+")
             .map(removingATs)
             .map(removingSpaces)
     }
