@@ -30,11 +30,11 @@ public class DataUploadService {
     }
     
     public func addHeader(key: String, value: String) {
-        queryParams[key] = value
+        headers[key] = value
     }
     
     public func addQueryParam(key: String, value: String) {
-        headers[key] = value
+        queryParams[key] = value
     }
 
     public func upload(_ uploadData: Data, progress: @escaping (UploadProgress) -> (), completion: @escaping (DataUploadServiceResponse) -> ()) {
