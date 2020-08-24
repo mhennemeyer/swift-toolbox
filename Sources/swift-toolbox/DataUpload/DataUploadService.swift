@@ -20,6 +20,7 @@ public class DataUploadService {
     var cancelable: Cancelable?
     
     private var headers = [String: String]()
+    private var queryParams = [String: String]()
 
     public init(_ url: URL, documentType: DocumentType, isTesting: Bool = false, emitError: Bool = false ) {
         self.isTesting = isTesting
@@ -29,6 +30,10 @@ public class DataUploadService {
     }
     
     public func addHeader(key: String, value: String) {
+        queryParams[key] = value
+    }
+    
+    public func addQueryParam(key: String, value: String) {
         headers[key] = value
     }
 
@@ -41,7 +46,7 @@ public class DataUploadService {
             return
         }
         
-        let uploadRunner = DataUploadRunner(url: self.url, documentType: documentType.rawValue, data: uploadData, headers: headers)
+        let uploadRunner = DataUploadRunner(url: self.url, documentType: documentType.rawValue, data: uploadData, headers: headers, params: queryParams)
         
         if let t = uploadRunner.task(progress: progress, completion: completion) {
             self.task = t

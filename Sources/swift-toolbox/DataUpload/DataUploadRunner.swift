@@ -9,14 +9,16 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
     let data: Data
     let documentType: String
     let headers: [String: String]
+    let params: [String: String]
     
     var uploadProgress: ((UploadProgress) -> ())?
     
-    init(url: URL, documentType: String, data: Data, headers: [String: String] = [String: String]()) {
+    init(url: URL, documentType: String, data: Data, headers: [String: String] = [String: String](), params: [String: String] = [String: String]()) {
         self.url = url
         self.data = data
         self.documentType = documentType
         self.headers = headers
+        self.params = params
     }
     
     lazy var uploadQueue: OperationQueue = {
@@ -54,8 +56,15 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         return task
     }
     
+    private var paramsUrlString: String {
+        guard !params.isEmpty else { return "" }
+        let s = params.map { key, value in "\(key)=\(value)"}.joined(separator: "&")
+        return "?\(s)"
+    }
+    
     private func request() -> URLRequest {
-        var request = URLRequest(url: url)
+        let parameterizedUrl = url.appendingPathComponent(paramsUrlString)
+        var request = URLRequest(url: parameterizedUrl)
         headers.forEach { key, value in
             request.addValue(value, forHTTPHeaderField: key)
         }
