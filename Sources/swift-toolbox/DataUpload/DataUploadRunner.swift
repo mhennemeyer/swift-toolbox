@@ -64,7 +64,7 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         }
         
         var request = URLRequest(url: components.url!)
-        
+        print("DataUpload Url: \(components.url)")
         headers.forEach { key, value in
             request.addValue(value, forHTTPHeaderField: key)
         }
