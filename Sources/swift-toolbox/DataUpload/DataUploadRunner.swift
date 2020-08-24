@@ -56,15 +56,15 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         return task
     }
     
-    private var paramsUrlString: String {
-        guard !params.isEmpty else { return "" }
-        let s = params.map { key, value in "\(key)=\(value)"}.joined(separator: "&")
-        return "?\(s)"
-    }
-    
     private func request() -> URLRequest {
-        let parameterizedUrl = url.appendingPathComponent(paramsUrlString)
-        var request = URLRequest(url: parameterizedUrl)
+        
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        components.queryItems = params.map { key, value in
+            URLQueryItem(name: key, value: value)
+        }
+        
+        var request = URLRequest(url: components.url!)
+        
         headers.forEach { key, value in
             request.addValue(value, forHTTPHeaderField: key)
         }

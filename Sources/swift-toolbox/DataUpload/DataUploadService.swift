@@ -46,7 +46,13 @@ public class DataUploadService {
             return
         }
         
-        let uploadRunner = DataUploadRunner(url: self.url, documentType: documentType.rawValue, data: uploadData, headers: headers, params: queryParams)
+        let uploadRunner = DataUploadRunner(
+            url: self.url,
+            documentType: documentType.rawValue,
+            data: uploadData,
+            headers: headers,
+            params: queryParams
+        )
         
         if let t = uploadRunner.task(progress: progress, completion: completion) {
             self.task = t
