@@ -21,6 +21,7 @@ public class DataUploadService {
     
     private var headers = [String: String]()
     private var queryParams = [String: String]()
+    private var pathComponents = [String]()
 
     public init(_ url: URL, documentType: DocumentType, isTesting: Bool = false, emitError: Bool = false ) {
         self.isTesting = isTesting
@@ -35,6 +36,10 @@ public class DataUploadService {
     
     public func addQueryParam(key: String, value: String) {
         queryParams[key] = value
+    }
+    
+    public func addPathComponent(_ string: String) {
+        pathComponents.append(string)
     }
 
     public func upload(_ uploadData: Data, progress: @escaping (UploadProgress) -> (), completion: @escaping (DataUploadServiceResponse) -> ()) {
@@ -51,7 +56,8 @@ public class DataUploadService {
             documentType: documentType.rawValue,
             data: uploadData,
             headers: headers,
-            params: queryParams
+            params: queryParams,
+            pathComponents: pathComponents
         )
         
         if let t = uploadRunner.task(progress: progress, completion: completion) {

@@ -10,15 +10,17 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
     let documentType: String
     let headers: [String: String]
     let params: [String: String]
+    let pathComponents: [String]
     
     var uploadProgress: ((UploadProgress) -> ())?
     
-    init(url: URL, documentType: String, data: Data, headers: [String: String] = [String: String](), params: [String: String] = [String: String]()) {
+    init(url: URL, documentType: String, data: Data, headers: [String: String] = [String: String](), params: [String: String] = [String: String](), pathComponents: [String] = [String]()) {
         self.url = url
         self.data = data
         self.documentType = documentType
         self.headers = headers
         self.params = params
+        self.pathComponents = pathComponents
     }
     
     lazy var uploadQueue: OperationQueue = {
@@ -58,13 +60,19 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
     
     private func request() -> URLRequest {
         
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+        var fullUrl = url
+        
+        pathComponents.forEach { path in
+            fullUrl = fullUrl.appendingPathComponent(path)
+        }
+        
+        var components = URLComponents(url: fullUrl, resolvingAgainstBaseURL: false)!
         components.queryItems = params.map { key, value in
             URLQueryItem(name: key, value: value)
         }
         
         var request = URLRequest(url: components.url!)
-        print("DataUpload Url: \(components.url)")
+        print("DataUpload Url: \(components.url!)")
         headers.forEach { key, value in
             request.addValue(value, forHTTPHeaderField: key)
         }
