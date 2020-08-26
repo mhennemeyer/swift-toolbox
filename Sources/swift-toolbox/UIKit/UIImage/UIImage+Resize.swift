@@ -13,5 +13,12 @@ public extension UIImage {
         defer { UIGraphicsEndImageContext() }
         return UIGraphicsGetImageFromCurrentImageContext()
     }
+    
+    func scaled(to target: CGSize) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(target, false, 1.0)
+        draw(in: CGRect(origin: .zero, size: target))
+        defer { UIGraphicsEndImageContext() }
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
 }
 
