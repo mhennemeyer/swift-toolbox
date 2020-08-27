@@ -45,7 +45,13 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
                 return
             }
             
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode < 300 && httpResponse.statusCode > 199 else {
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.error)
+                return
+            }
+            
+            guard httpResponse.statusCode < 300 && httpResponse.statusCode > 199 else {
+                print("Data upload statusCode: \(httpResponse.statusCode)")
                 completion(.error)
                 return
             }
