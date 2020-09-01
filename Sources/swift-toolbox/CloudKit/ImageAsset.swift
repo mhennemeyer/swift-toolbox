@@ -1,3 +1,4 @@
+#if !os(macOS)
 import CloudKit
 import UIKit
 
@@ -51,3 +52,5 @@ public extension CKAsset {
         return nil
     }
 }
+
+#endif

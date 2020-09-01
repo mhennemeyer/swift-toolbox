@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension UITableView {
@@ -5,3 +6,4 @@ public extension UITableView {
         setContentOffset(CGPoint(x: 0, y: CGFloat.greatestFiniteMagnitude), animated: false)
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension UIColor {
@@ -15,3 +16,4 @@ public extension UIColor {
         self.init(patternImage: image)
     }
 }
+#endif

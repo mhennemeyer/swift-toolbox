@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension UIPageViewController {
@@ -15,3 +16,4 @@ public extension UIPageViewController {
         return retVal
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension UINavigationItem {
@@ -5,3 +6,4 @@ public extension UINavigationItem {
         self.backBarButtonItem = UIBarButtonItem(title: backTitle)
     }
 }
+#endif

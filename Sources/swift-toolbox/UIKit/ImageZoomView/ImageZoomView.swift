@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public class ImageZoomView: UIScrollView, UIScrollViewDelegate {
@@ -49,3 +50,4 @@ public class ImageZoomView: UIScrollView, UIScrollViewDelegate {
     }
 }
 
+#endif

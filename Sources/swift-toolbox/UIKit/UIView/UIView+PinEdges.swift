@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 @available(iOS 9.0, *)
@@ -9,3 +10,4 @@ public extension UIView {
         bottomAnchor.constraint(equalTo: other.bottomAnchor).isActive = true
     }
 }
+#endif

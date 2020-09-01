@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 open class UIXIBView: UIView, XIBView {
@@ -25,3 +26,4 @@ open class UIXIBView: UIView, XIBView {
     
     open func setup() {}
 }
+#endif

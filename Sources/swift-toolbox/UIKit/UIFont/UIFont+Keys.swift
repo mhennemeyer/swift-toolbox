@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 @available(iOS 13.0, *)
@@ -21,3 +22,4 @@ public extension UIFont {
         return nil
     }
 }
+#endif

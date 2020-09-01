@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension UITraitCollection {
@@ -22,3 +23,4 @@ public extension UITraitCollection {
         return isIphoneLandscape || isIphonePortrait
     }
 }
+#endif

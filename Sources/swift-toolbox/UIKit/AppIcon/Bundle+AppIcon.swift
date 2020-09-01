@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension Bundle {
@@ -19,4 +20,4 @@ public extension Bundle {
         return [String]()
     }
 }
-
+#endif

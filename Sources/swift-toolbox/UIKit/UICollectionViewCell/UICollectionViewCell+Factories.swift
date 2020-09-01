@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension UICollectionViewCell {
@@ -6,3 +7,4 @@ public extension UICollectionViewCell {
     }
 }
 
+#endif

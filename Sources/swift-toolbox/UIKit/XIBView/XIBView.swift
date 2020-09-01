@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public protocol XIBView: class {
@@ -28,3 +29,4 @@ public extension XIBView where Self: UIView {
         return view
     }
 }
+#endif

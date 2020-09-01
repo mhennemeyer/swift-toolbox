@@ -1,3 +1,4 @@
+#if !os(macOS)
 import UIKit
 
 public extension UINavigationBar {
@@ -16,3 +17,4 @@ public extension UINavigationBar {
     }
 }
 
+#endif
