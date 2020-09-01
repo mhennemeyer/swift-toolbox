@@ -13,6 +13,15 @@ public enum DataUploadServiceResponse {
         }
     }
     
+    public var isUnauthorized: Bool {
+        switch self {
+        case let .error(statusCode):
+            return statusCode == 401
+        default:
+            return false
+        }
+    }
+    
     static let clientError = 400
     static let unauthorized = 401
     
