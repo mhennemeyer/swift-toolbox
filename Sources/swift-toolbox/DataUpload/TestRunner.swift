@@ -20,7 +20,7 @@ public class TestRunner: Cancelable {
             ui { progress(.zero) }
             for i in 1...10 {
                 if i == 5 && self.emitError {
-                    ui { completion(.error) }
+                    ui { completion(.error(statusCode: DataUploadServiceResponse.serverError)) }
                     return
                 }
                 if self.stopRunning { return }

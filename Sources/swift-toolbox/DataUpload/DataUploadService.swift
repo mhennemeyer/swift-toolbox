@@ -65,7 +65,7 @@ public class DataUploadService {
             self.cancelable = t
             self.task?.resume()
         } else {
-            completion(.error)
+            completion(.error(statusCode: DataUploadServiceResponse.clientError))
         }
     }
 

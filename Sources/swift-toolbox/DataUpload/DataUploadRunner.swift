@@ -37,21 +37,21 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         let session = URLSession(configuration: configuration, delegate:self, delegateQueue: uploadQueue)
         
         let task = session.dataTask(with: request()) { data, response, error in
-            guard error == nil else { print("UploadService error: \(error!)"); completion(.error); return }
+            guard error == nil else { print("UploadService error: \(error!)"); completion(.error(statusCode: DataUploadServiceResponse.serverError)); return }
             
             guard (try? JSONSerialization.jsonObject(with: data!, options: []) as? [String: AnyObject]) != nil else {
                 print("UploadService Fail no json result: \(String(data: data!, encoding: .utf8) ?? "No Data")");
-                completion(.error)
+                completion(.error(statusCode: DataUploadServiceResponse.serverError))
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.error)
+                completion(.error(statusCode: DataUploadServiceResponse.serverError))
                 return
             }
             print("Data upload statusCode: \(httpResponse.statusCode)")
             guard httpResponse.statusCode < 300 && httpResponse.statusCode > 199 else {
-                completion(.error)
+                completion(DataUploadServiceResponse.fromStatusCode(httpResponse.statusCode))
                 return
             }
             
