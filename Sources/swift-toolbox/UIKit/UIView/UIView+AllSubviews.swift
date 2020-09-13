@@ -3,10 +3,10 @@ import UIKit
 
 public extension UIView {
     var allSubviews: [UIView] {
-        let result = [UIView]()
-        result.append(subviews)
+        var result = [UIView]()
+        result.append(contentsOf: subviews)
         for subview in subviews {
-            result.append(subview.allSubviews)
+            result.append(contentsOf: subview.allSubviews)
         }
         return result
     }
