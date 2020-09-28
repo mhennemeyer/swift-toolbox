@@ -86,7 +86,7 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         bodyData.append("Content-Type: multipart/form-data; boundary=\(boundary)\r\n".data(using: .utf8)!)
         bodyData.append("--\(boundary)\r\n".data(using: .utf8)!)
         bodyData.append("Content-Disposition: form-data; name=\"file\"; filename=\"video.mp4\"\r\n".data(using: .utf8)!)
-        bodyData.append("Content-Type: video/mp4;\r\n\r\n".data(using: .utf8)!)
+        bodyData.append("Content-Type: \(self.documentType);\r\n\r\n".data(using: .utf8)!)
         bodyData.append(self.data)
         bodyData.append("\r\n".data(using: .utf8)!)
         bodyData.append("--\(boundary)--\r\n".data(using: .utf8)!)
