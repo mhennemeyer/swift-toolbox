@@ -13,6 +13,7 @@ public class DataUploadService {
     }
     let isTesting: Bool
     let documentType: DocumentType
+    let filename: String
     let url: URL
     public var emitError: Bool
     
@@ -23,9 +24,10 @@ public class DataUploadService {
     private var queryParams = [String: String]()
     private var pathComponents = [String]()
 
-    public init(_ url: URL, documentType: DocumentType, isTesting: Bool = false, emitError: Bool = false ) {
+    public init(_ url: URL, documentType: DocumentType, filename: String, isTesting: Bool = false, emitError: Bool = false ) {
         self.isTesting = isTesting
         self.documentType = documentType
+        self.filename = filename
         self.url = url
         self.emitError = emitError
     }
@@ -54,6 +56,7 @@ public class DataUploadService {
         let uploadRunner = DataUploadRunner(
             url: self.url,
             documentType: documentType.rawValue,
+            filename: filename,
             data: uploadData,
             headers: headers,
             params: queryParams,

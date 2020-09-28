@@ -15,7 +15,7 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
     
     var uploadProgress: ((UploadProgress) -> ())?
     
-    init(url: URL, documentType: String = "jpeg", filename: String = "file.jpeg", data: Data, headers: [String: String] = [String: String](), params: [String: String] = [String: String](), pathComponents: [String] = [String]()) {
+    init(url: URL, documentType: String, filename: String, data: Data, headers: [String: String] = [String: String](), params: [String: String] = [String: String](), pathComponents: [String] = [String]()) {
         self.url = url
         self.data = data
         self.documentType = documentType
