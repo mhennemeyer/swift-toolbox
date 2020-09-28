@@ -8,16 +8,18 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
     let url: URL
     let data: Data
     let documentType: String
+    let filename: String
     let headers: [String: String]
     let params: [String: String]
     let pathComponents: [String]
     
     var uploadProgress: ((UploadProgress) -> ())?
     
-    init(url: URL, documentType: String, data: Data, headers: [String: String] = [String: String](), params: [String: String] = [String: String](), pathComponents: [String] = [String]()) {
+    init(url: URL, documentType: String = "jpeg", filename: String = "file.jpeg", data: Data, headers: [String: String] = [String: String](), params: [String: String] = [String: String](), pathComponents: [String] = [String]()) {
         self.url = url
         self.data = data
         self.documentType = documentType
+        self.filename = filename
         self.headers = headers
         self.params = params
         self.pathComponents = pathComponents
@@ -85,7 +87,7 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         let boundary = "\(UUID().uuidString)"
         bodyData.append("Content-Type: multipart/form-data; boundary=\(boundary)\r\n".data(using: .utf8)!)
         bodyData.append("--\(boundary)\r\n".data(using: .utf8)!)
-        bodyData.append("Content-Disposition: form-data; name=\"file\"; filename=\"video.mp4\"\r\n".data(using: .utf8)!)
+        bodyData.append("Content-Disposition: form-data; name=\"file\"; filename=\"\(filename)\"\r\n".data(using: .utf8)!)
         bodyData.append("Content-Type: \(self.documentType);\r\n\r\n".data(using: .utf8)!)
         bodyData.append(self.data)
         bodyData.append("\r\n".data(using: .utf8)!)
@@ -94,6 +96,7 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         request.setValue(String(bodyData.count), forHTTPHeaderField: "Content-Length")
         request.httpBody = bodyData
+        print("request: \(request)")
         return request
     }
     
