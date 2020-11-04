@@ -3,10 +3,10 @@ import UIKit
 
 public struct MHColorScheme: Equatable {
     
-    var backgroundColor: UIColor
-    var textColor: UIColor
-    var sectionColor: UIColor
-    var name: String
+    public var backgroundColor: UIColor
+    public var textColor: UIColor
+    public var sectionColor: UIColor
+    public var name: String
     
     public init(backgroundColor: UIColor, textColor: UIColor, sectionColor: UIColor, name: String) {
         self.backgroundColor = backgroundColor
