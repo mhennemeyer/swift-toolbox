@@ -59,9 +59,6 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
             
             print("Data Upload Json: \(json)")
             
-            
-            
-            
             completion(.success(statusCode: httpResponse.statusCode))
         }
         return task
