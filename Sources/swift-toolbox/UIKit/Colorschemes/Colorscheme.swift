@@ -2,42 +2,42 @@
 import UIKit
 
 public class Colorscheme {
-    var primaryColor: UIColor {
+    public static var primaryColor: UIColor {
         MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).backgroundColor
     }
     
-    var primaryDarkerColor: UIColor {
+    public static var primaryDarkerColor: UIColor {
         primaryColor.darker()
     }
     
-    var secondaryColor: UIColor {
+    public static var secondaryColor: UIColor {
         MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).textColor
     }
     
-    var tertiaryColor: UIColor {
+    public static var tertiaryColor: UIColor {
         MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).backgroundColor.withAlphaComponent(0.7)
     }
     
-    var sectionColor: UIColor {
+    public static var sectionColor: UIColor {
         MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
     }
     
-    var okColor: UIColor {
+    public static var okColor: UIColor {
         // TODO
         MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
     }
     
-    var warnColor: UIColor {
+    public static var warnColor: UIColor {
         // TODO
         MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
     }
     
-    var grayishColor: UIColor {
+    public static var grayishColor: UIColor {
         // TODO
         MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
     }
     
-    func colorize(cell: UITableViewCell) {
+    public static func colorize(cell: UITableViewCell) {
         cell.backgroundColor = primaryColor
         cell.tintColor = secondaryColor
         cell.allSubviews.forEach { subview in
@@ -49,20 +49,20 @@ public class Colorscheme {
         }
     }
     
-    func colorize(bar: UINavigationBar?) {
+    public static func colorize(bar: UINavigationBar?) {
         guard let bar = bar else { return }
         bar.barTintColor = primaryColor
         bar.tintColor = secondaryColor
         bar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : secondaryColor]
     }
     
-    func colorize(view: UIView?) {
+    public static func colorize(view: UIView?) {
         guard let view = view else { return }
         view.backgroundColor = primaryDarkerColor
         view.tintColor = secondaryColor
     }
     
-    func fullColorize(view: UIView?) {
+    public static func fullColorize(view: UIView?) {
         guard let view = view else { return }
         view.backgroundColor = primaryDarkerColor
         view.tintColor = secondaryColor
