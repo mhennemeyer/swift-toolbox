@@ -8,7 +8,7 @@ public struct MHColorScheme: Equatable {
     var sectionColor: UIColor
     var name: String
     
-    init(backgroundColor: UIColor, textColor: UIColor, sectionColor: UIColor, name: String) {
+    public init(backgroundColor: UIColor, textColor: UIColor, sectionColor: UIColor, name: String) {
         self.backgroundColor = backgroundColor
         self.textColor = textColor
         self.sectionColor = sectionColor
@@ -32,7 +32,7 @@ public struct MHColorScheme: Equatable {
     
     // MARK: - Access
     
-    static func colorSchemeBy(name: String) -> MHColorScheme {
+    public static func colorSchemeBy(name: String) -> MHColorScheme {
         for scheme in allColorSchemes {
             if scheme.name == name {
                 return scheme
@@ -41,43 +41,43 @@ public struct MHColorScheme: Equatable {
         fatalError()
     }
     
-    static let allColorSchemes = grayMHColorSchemes + redMHColorSchemes + greenMHColorSchemes + blueMHColorSchemes
+    public static let allColorSchemes = grayMHColorSchemes + redMHColorSchemes + greenMHColorSchemes + blueMHColorSchemes
     
-    static let colorfulColorSchemes = redMHColorSchemes + greenMHColorSchemes + blueMHColorSchemes
+    public static let colorfulColorSchemes = redMHColorSchemes + greenMHColorSchemes + blueMHColorSchemes
     
-    static func colorSchemes(at section: Int) -> [MHColorScheme] {
+    public static func colorSchemes(at section: Int) -> [MHColorScheme] {
         let schemes = MHColorSchemeSections[section]["MHColorSchemes"] as! [MHColorScheme]
         return schemes
     }
     
-    static func sectionName(at section: Int) -> String {
+    public static func sectionName(at section: Int) -> String {
         let name = MHColorSchemeSections[section]["SectionName"] as! String
         return name
     }
     
-    static func sectionColor(at section: Int) -> UIColor {
+    public static func sectionColor(at section: Int) -> UIColor {
         let color = MHColorSchemeSections[section]["SectionColor"] as! UIColor
         return color
     }
     
-    static let MHColorSchemeSections = [
+    public static let MHColorSchemeSections = [
         ["MHColorSchemes": grayMHColorSchemes, "SectionColor": graySectionColor, "SectionName":"Gray Schemes"],
         ["MHColorSchemes": redMHColorSchemes, "SectionColor": redSectionColor, "SectionName":"Red Schemes"],
         ["MHColorSchemes": greenMHColorSchemes, "SectionColor": greenSectionColor, "SectionName":"Green Schemes"],
         ["MHColorSchemes": blueMHColorSchemes, "SectionColor": blueSectionColor, "SectionName":"Blue Schemes"]
     ]
     
-    static let grayMHColorSchemes = [licorice, lead, tungsten, iron, steel, tin, nickel, aluminum, magnesium, silver, mercury, snow]
-    static let graySectionColor = UIColor.iron
+    public static let grayMHColorSchemes = [licorice, lead, tungsten, iron, steel, tin, nickel, aluminum, magnesium, silver, mercury, snow]
+    public static let graySectionColor = UIColor.iron
     
-    static let redMHColorSchemes = [cayenne, mocha, plum, maroon, maraschino, tangerine, lemon, magenta, strawberry, salmon, cantaloupe, banana, carnation]
-    static let redSectionColor = UIColor.maraschino
+    public static let redMHColorSchemes = [cayenne, mocha, plum, maroon, maraschino, tangerine, lemon, magenta, strawberry, salmon, cantaloupe, banana, carnation]
+    public static let redSectionColor = UIColor.maraschino
     
-    static let greenMHColorSchemes = [aspargus, fern, clover, moss, teal, lime, spring, seaFoam, honeydew, flora, spindrift ]
-    static let greenSectionColor = UIColor.moss
+    public static let greenMHColorSchemes = [aspargus, fern, clover, moss, teal, lime, spring, seaFoam, honeydew, flora, spindrift ]
+    public static let greenSectionColor = UIColor.moss
     
-    static let blueMHColorSchemes = [ocean, midnight, eggplant, turquoise, aqua, blueberry, grape, ice, sky, orchid, lavender]
-    static let blueSectionColor = UIColor.ocean
+    public static let blueMHColorSchemes = [ocean, midnight, eggplant, turquoise, aqua, blueberry, grape, ice, sky, orchid, lavender]
+    public static let blueSectionColor = UIColor.ocean
     
     // MARK: - MHColorSchemes
     
