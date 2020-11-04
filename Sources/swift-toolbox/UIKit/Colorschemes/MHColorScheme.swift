@@ -26,7 +26,7 @@ public struct MHColorScheme: Equatable {
     
     // MARK: - Equatable
     
-    static func ==(lhs: MHColorScheme, rhs: MHColorScheme) -> Bool {
+    public static func ==(lhs: MHColorScheme, rhs: MHColorScheme) -> Bool {
         return lhs.name == rhs.name
     }
     
