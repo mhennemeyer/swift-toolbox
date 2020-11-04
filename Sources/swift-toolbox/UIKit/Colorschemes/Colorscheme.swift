@@ -2,17 +2,18 @@
 import UIKit
 
 public protocol Colorscheme {
-    static var primaryColor: UIColor { get }
-    static var primaryDarkerColor: UIColor { get }
-    static var secondaryColor: UIColor { get }
-    static var tertiaryColor: UIColor { get }
-    static var okColor: UIColor { get }
-    static var warnColor: UIColor { get }
-    static var grayishColor: UIColor { get }
+    static var shared: Self { get }
+    var primaryColor: UIColor { get }
+    var primaryDarkerColor: UIColor { get }
+    var secondaryColor: UIColor { get }
+    var tertiaryColor: UIColor { get }
+    var okColor: UIColor { get }
+    var warnColor: UIColor { get }
+    var grayishColor: UIColor { get }
 }
 
 public extension Colorscheme {
-    static func colorize(cell: UITableViewCell) {
+    func colorize(cell: UITableViewCell) {
         cell.backgroundColor = primaryColor
         cell.tintColor = secondaryColor
         cell.allSubviews.forEach { subview in
@@ -24,20 +25,20 @@ public extension Colorscheme {
         }
     }
     
-    static func colorize(bar: UINavigationBar?) {
+    func colorize(bar: UINavigationBar?) {
         guard let bar = bar else { return }
         bar.barTintColor = primaryColor
         bar.tintColor = secondaryColor
         bar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : secondaryColor]
     }
     
-    static func colorize(view: UIView?) {
+    func colorize(view: UIView?) {
         guard let view = view else { return }
         view.backgroundColor = primaryDarkerColor
         view.tintColor = secondaryColor
     }
     
-    static func fullColorize(view: UIView?) {
+    func fullColorize(view: UIView?) {
         guard let view = view else { return }
         view.backgroundColor = primaryDarkerColor
         view.tintColor = secondaryColor
