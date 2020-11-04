@@ -1,3 +1,5 @@
+import Foundation
+
 public struct ColorschemeDefault {
     static let store = UserDefaults.standard
     private static let colorschemeKey = "BoardColor.key"
