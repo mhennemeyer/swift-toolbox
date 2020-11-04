@@ -1,18 +1,42 @@
 #if !os(macOS)
 import UIKit
 
-public protocol Colorscheme: class {
-    static var shared: Self { get }
-    var primaryColor: UIColor { get }
-    var primaryDarkerColor: UIColor { get }
-    var secondaryColor: UIColor { get }
-    var tertiaryColor: UIColor { get }
-    var okColor: UIColor { get }
-    var warnColor: UIColor { get }
-    var grayishColor: UIColor { get }
-}
-
-public extension Colorscheme {
+public class Colorscheme {
+    var primaryColor: UIColor {
+        MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).backgroundColor
+    }
+    
+    var primaryDarkerColor: UIColor {
+        primaryColor.darker()
+    }
+    
+    var secondaryColor: UIColor {
+        MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).textColor
+    }
+    
+    var tertiaryColor: UIColor {
+        MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).backgroundColor.withAlphaComponent(0.7)
+    }
+    
+    var sectionColor: UIColor {
+        MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
+    }
+    
+    var okColor: UIColor {
+        // TODO
+        MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
+    }
+    
+    var warnColor: UIColor {
+        // TODO
+        MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
+    }
+    
+    var grayishColor: UIColor {
+        // TODO
+        MHColorScheme.colorSchemeBy(name: ColorschemeDefault.boardColorString!).sectionColor
+    }
+    
     func colorize(cell: UITableViewCell) {
         cell.backgroundColor = primaryColor
         cell.tintColor = secondaryColor
