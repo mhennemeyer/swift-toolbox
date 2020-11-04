@@ -1,7 +1,7 @@
 #if !os(macOS)
 import UIKit
 
-public protocol Colorscheme {
+public protocol Colorscheme: class {
     static var shared: Self { get }
     var primaryColor: UIColor { get }
     var primaryDarkerColor: UIColor { get }
