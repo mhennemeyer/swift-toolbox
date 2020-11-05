@@ -7,9 +7,6 @@ public extension UIViewController {
         print("fromStoryboard load \(Self.self) from Storyboard")
         let bundle = bundle ?? Bundle(for: self)
         print("fromStoryboard bundle: \(bundle)")
-        if !bundle.isLoaded {
-            bundle.load()
-        }
         let name = name ?? Names.klazzName(self)
         print("fromStoryboard name: \(name)")
         let ctrl = UIStoryboard(name: name, bundle: bundle).instantiateInitialViewController()
