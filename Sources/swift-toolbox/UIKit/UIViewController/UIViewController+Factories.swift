@@ -4,9 +4,14 @@ import UIKit
 @available(iOS 13.0, *)
 public extension UIViewController {
     static func fromStoryboard(bundle: Bundle? = nil, name: String? = nil) -> Self {
+        print("fromStoryboard load \(Self.self) from Storyboard")
         let bundle = bundle ?? Bundle(for: self)
+        print("fromStoryboard bundle: \(bundle)")
         let name = name ?? Names.klazzName(self)
-        return UIStoryboard(name: name, bundle: bundle).instantiateInitialViewController()  as! Self
+        print("fromStoryboard name: \(name)")
+        let ctrl = UIStoryboard(name: name, bundle: bundle).instantiateInitialViewController()
+        print("fromStoryboard ctrl: \(ctrl)")
+        return ctrl as! Self
     }
     
     static func fromMainStoryboard() -> Self {
