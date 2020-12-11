@@ -26,6 +26,7 @@ public extension UIColor {
 
     func lighter(by amount: CGFloat = 0.2) -> Self { mix(with: .white, amount: amount) }
     func darker(by amount: CGFloat = 0.2) -> Self { mix(with: .black, amount: amount) }
+    func littleDarker() -> Self { mix(with: .black, amount: 0.05) }
 }
 
 #endif
