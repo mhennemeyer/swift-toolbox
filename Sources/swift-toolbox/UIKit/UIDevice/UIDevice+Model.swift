@@ -1,3 +1,39 @@
+public struct Device {
+    static var isMac: Bool {
+        #if targetEnvironment(macCatalyst)
+        return true
+        #else
+        return false
+        #endif
+    }
+    
+    static var isPad: Bool {
+        #if targetEnvironment(macCatalyst)
+        return false
+        #else
+        return UIDevice.current.userInterfaceIdiom == .pad
+        #endif
+    }
+    
+    static var isPad11: Bool {
+        #if targetEnvironment(macCatalyst)
+        return false
+        #else
+        return UIDevice.isPad11
+        #endif
+    }
+    
+    static var isPhone: Bool {
+        #if targetEnvironment(macCatalyst)
+        return false
+        #else
+        return UIDevice.current.userInterfaceIdiom == .phone
+        #endif
+    }
+}
+
+#if !os(macOS)
+
 import Foundation
 import UIKit
 
@@ -73,3 +109,6 @@ public extension UIDevice {
         modelName.hasPrefix("iPad Pro (11")
     }
 }
+
+
+#endif
