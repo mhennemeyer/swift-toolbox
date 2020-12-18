@@ -1,5 +1,5 @@
 public struct Device {
-    static var isMac: Bool {
+    public static var isMac: Bool {
         #if targetEnvironment(macCatalyst)
         return true
         #else
@@ -7,7 +7,7 @@ public struct Device {
         #endif
     }
     
-    static var isPad: Bool {
+    public static var isPad: Bool {
         #if targetEnvironment(macCatalyst)
         return false
         #else
@@ -15,7 +15,7 @@ public struct Device {
         #endif
     }
     
-    static var isPad11: Bool {
+    public static var isPad11: Bool {
         #if targetEnvironment(macCatalyst)
         return false
         #else
@@ -23,7 +23,7 @@ public struct Device {
         #endif
     }
     
-    static var isPhone: Bool {
+    public static var isPhone: Bool {
         #if targetEnvironment(macCatalyst)
         return false
         #else
