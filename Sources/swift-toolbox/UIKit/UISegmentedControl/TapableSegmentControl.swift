@@ -15,6 +15,7 @@ public class TapableSegmentControl : UISegmentedControl {
             super.selectedSegmentIndex
         }
         set {
+            print("set selected \(newValue)")
             if selectedSegmentIndex == newValue {
                 onTapSelected(selectedSegmentIndex)
             }
