@@ -8,22 +8,22 @@
 import UIKit
 
 public class TapableSegmentControl : UISegmentedControl {
-    public var onTapSelected: ((Int) -> Void) = {_ in };
+    public var onTap: ((Int, Int) -> Void) = {_, _ in };
     
-    var oldValue: Int = 0
+    var priorSelected: Int = 0
     
     public override var selectedSegmentIndex: Int {
         get {
             super.selectedSegmentIndex
         }
         set {
-            oldValue = selectedSegmentIndex
+            onTap(selectedSegmentIndex, newValue)
             super.selectedSegmentIndex = newValue
         }
     }
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        onTapSelected(oldValue)
+        //onTapSelected(oldValue)
         super.touchesBegan(touches, with: event)
     }
 }
