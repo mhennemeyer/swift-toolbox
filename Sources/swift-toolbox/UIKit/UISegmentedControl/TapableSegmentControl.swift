@@ -12,7 +12,7 @@ public class TapableSegmentControl : UISegmentedControl {
     
     var priorSelected: Int = 0
     
-    public override var selectedSegmentIndex: Int {
+    public override var selectedSegmentIndex: NSInteger {
         get {
             super.selectedSegmentIndex
         }
