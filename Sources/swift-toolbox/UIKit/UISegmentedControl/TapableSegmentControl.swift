@@ -12,7 +12,7 @@ public class TapableSegmentControl : UISegmentedControl {
     
     public override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         let oldValue = selectedSegmentIndex
-        super.touchesBegan(touches, with: event)
+        super.touchesEnded(touches, with: event)
         onTap(oldValue, selectedSegmentIndex)
     }
 }
