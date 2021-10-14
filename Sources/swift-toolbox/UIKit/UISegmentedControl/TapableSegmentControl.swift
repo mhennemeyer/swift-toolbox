@@ -24,7 +24,7 @@ public class TapableSegmentControl : UISegmentedControl {
     }
     
     public override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
         onTapSelected(selectedSegmentIndex)
+        super.touchesBegan(touches, with: event)
     }
 }
