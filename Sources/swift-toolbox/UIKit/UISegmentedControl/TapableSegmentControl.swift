@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TapableSegmentControl : UISegmentedControl {
+public class TapableSegmentControl : UISegmentedControl {
     var onTapSelected: (Int -> Void);
     
     public override var selectedSegmentIndex: Int {
