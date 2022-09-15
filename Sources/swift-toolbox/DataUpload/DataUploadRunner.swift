@@ -97,6 +97,8 @@ public class DataUploadRunner: NSObject, URLSessionDelegate, URLSessionTaskDeleg
         request.setValue(String(bodyData.count), forHTTPHeaderField: "Content-Length")
         request.httpBody = bodyData
         print("request: \(request)")
+        let bodyString = String(data: bodyData, encoding: .utf8)!
+        print("body: \(bodyString)")
         return request
     }
     
